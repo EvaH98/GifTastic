@@ -7,6 +7,11 @@ body {
 	    background-image: linear-gradient(73deg,#e646b6,#6157ff);
 }
 
+#add-mood {
+	background-image: linear-gradient(73deg,#e646b6,#6157ff);
+	color: white;
+}
+
 .display-4, .lead {
 	color: white;
 }
@@ -16,7 +21,13 @@ body {
 	font-size: 80px;
 }
 
-.lead {
+.lead, #moodbar {
 	font-family: 'Yantramanav', sans-serif;
 	font-size: 30px;
 }
+
+#moodbar {
+	font-size: 30px;
+	font-family: 'Archivo Black', sans-serif;
+}
+
