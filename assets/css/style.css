@@ -1,0 +1,22 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+#jumbo {
+	    background-image: linear-gradient(73deg,#e646b6,#6157ff);
+}
+
+.display-4, .lead {
+	color: white;
+}
+
+.display-4 {
+	font-family: 'Archivo Black', sans-serif;
+	font-size: 80px;
+}
+
+.lead {
+	font-family: 'Yantramanav', sans-serif;
+	font-size: 30px;
+}
