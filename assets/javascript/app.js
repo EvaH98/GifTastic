@@ -14,5 +14,27 @@ function displayMoodGifs() {
 		method: "GET"
 	}).then(function(respnse) {
 
+		//Records the gif in the console
+		console.log(queryURL);
+		console.log(respnse);
+
 	});
+}
+
+//This function will display gif data
+function renderButtons() {
+
+	//prevent repeated buttons
+	$("#buttons-view").empty();
+
+	//loop through the array of moods
+	for (var i = 0; i < moods.length; i++) {
+		var a = $("<button>");
+		a.attr("data-name", moods[i]);
+		a.text(moods[i]);
+		$("#buttons-view").append(a);
+	}
 } 
+
+//This function will handle events when a button is called
+
