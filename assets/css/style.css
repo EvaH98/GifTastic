@@ -2,7 +2,11 @@ body {
 	background-color: black;
 	color: white;
 }
-
+button {
+	background-image: linear-gradient(73deg,#e646b6,#6157ff);
+	color: white;
+	margin-right: 30px;
+}
 #jumbo {
 	    background-image: linear-gradient(73deg,#e646b6,#6157ff);
 }
