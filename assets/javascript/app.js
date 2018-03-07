@@ -2,6 +2,37 @@
 
 var moods = ["Happy", "Sad", "Angry", "Hungry"]
 
+//This function will display gif data
+function renderButtons() {
+
+	//prevent repeated buttons
+	$("#buttons-view").empty();
+
+	//loop through the array of moods
+	for (var i = 0; i < moods.length; i++) {
+		var a = $("<button>");
+		a.addClass("mood-btn");
+		a.attr("data-name", moods[i]);
+		a.text(moods[i]);
+		$("#buttons-view").append(a);
+	}
+}
+
+//This adds more moods to the array
+$("#add-mood").on("click", function(event) {
+  event.preventDefault();
+
+  // Get the input from the textbox
+  var mood = $("#mood-input").val().trim();
+
+  // The mood from the textbox is then added to our moods array
+  moods.push(mood);
+  $("#mood-input").val("");
+
+  // Redraw the mood buttons
+  renderButtons();
+});
+
 //This function will re-render the HTML to display the appropriate content
 function displayMoodGifs() {
 
@@ -15,6 +46,8 @@ function displayMoodGifs() {
 	}).then(function(response) {
 
 		var dataArray = response.data;
+
+		$("#mood-view").empty();
 
 		for (var i = 0; i < dataArray.length; i++){
 
@@ -35,48 +68,37 @@ function displayMoodGifs() {
       	newImg.attr("data-state", "still");
       	moodDiv.append(newImg);
 
-        //
-        $("#mood-view").prepend(newImg);
 
-
-//$("#gif-area").append('<img class="gif" src="' + response.data[i].images.fixed_height_still.url +'">');
-
-    
+      	$("#mood-view").append(moodDiv);
+   
 	}
 });
 }
 
-function animateMood () {
-	
+//This function will animate a still Gif or stop a moving Gif
+function animateGif () {
+
+	var state = $(this).find("img").attr("data-state");
+
+  	// Make the Gif either animated or still depending on the "data-state" value
+  	if (state === "still") {
+    	$(this).find("img").attr("src", $(this).find("img").attr("data-animate"));
+    	$(this).find("img").attr("data-state", "animate");
+  	} else {
+    	$(this).find("img").attr("src", $(this).find("img").attr("data-still"));
+    	$(this).find("img").attr("data-state", "still");
+  }
 }
 
-	
 
-//This function will display gif data
-function renderButtons() {
-
-	//prevent repeated buttons
-	$("#buttons-view").empty();
-
-	//loop through the array of moods
-	for (var i = 0; i < moods.length; i++) {
-		var a = $("<button>");
-		a.addClass("mood-btn");
-		a.attr("data-name", moods[i]);
-		a.text(moods[i]);
-		$("#buttons-view").append(a);
-	}
-} 
-
-//This function will handle events when a button is called
-$("#add-mood").on("click", function(event) {
-	event.preventDefault();
-
-	var mood = $("#mood-input").val().trim();
-	moods.push(mood);
-	renderButtons();
+$(document).ready(function() {
+  renderButtons();
 });
 
 $(document).on("click", ".mood-btn", displayMoodGifs);
-renderButtons();
+$(document).on("click", ".moodGif", animateGif);
+
+
+
+
 
