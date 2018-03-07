@@ -30,6 +30,7 @@ function renderButtons() {
 	//loop through the array of moods
 	for (var i = 0; i < moods.length; i++) {
 		var a = $("<button>");
+		a.addClass("mood");
 		a.attr("data-name", moods[i]);
 		a.text(moods[i]);
 		$("#buttons-view").append(a);
@@ -37,4 +38,14 @@ function renderButtons() {
 } 
 
 //This function will handle events when a button is called
+$("#add-mood").on("click", function(event) {
+	event.preventDefault();
+
+	var mood = $("#mood-input").val().trim();
+	moods.push(mood);
+	renderButtons();
+});
+
+$(document).on("click", ".mood", displayMoodGifs);
+renderButtons();
 
