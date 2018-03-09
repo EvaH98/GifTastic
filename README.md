@@ -2,7 +2,7 @@
 
 link to GitHub Pages: https://evah98.github.io/GifTastic/
 
-<h1>Introducing: Moody Gifs! Express your mood through gifs! Brought to you by GIPHY API</h1>
+<h1>Introducing: Moody Gifs! Express your mood through gifs!</h1>
 <br>
 <img src="https://media3.giphy.com/media/Is1O1TWV0LEJi/200.gif" align="middle">
 <br>
